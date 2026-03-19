@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #1C1C1C;
+    background-color: #ffffff;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-[#111111] px-6 py-3 rounded-lg font-bold hover:bg-primary-dark transition-all duration-200 inline-flex items-center gap-2 shadow-sm hover:shadow-md active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#111111] transition-all duration-200 inline-flex items-center gap-2;
+  }
+  .btn-outline {
+    @apply border-2 border-primary text-primary px-6 py-3 rounded-lg font-bold hover:bg-primary hover:text-[#111111] transition-all duration-200 inline-flex items-center gap-2;
+  }
+  .btn-dark {
+    @apply bg-[#111111] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#222222] transition-all duration-200 inline-flex items-center gap-2;
+  }
+
+  /* Scroll-triggered animation base — elements start hidden */
+  .reveal {
+    opacity: 0;
+  }
+  .reveal.visible {
+    @apply animate-fade-up;
+  }
+  .reveal-scale.visible {
+    @apply animate-scale-in;
+  }
+  .reveal-fade.visible {
+    @apply animate-fade-in;
+  }
+
+  /* Stagger helpers via CSS custom properties */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+}
+
+/* Vertical video phone frame */
+.phone-frame {
+  position: relative;
+  display: inline-block;
+  background: #111;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+}
+.phone-frame::before {
+  content: '';
+  position: absolute;
+  top: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 6px;
+  background: #333;
+  border-radius: 3px;
+}
+.phone-frame video {
+  border-radius: 1.5rem;
+  display: block;
+}
