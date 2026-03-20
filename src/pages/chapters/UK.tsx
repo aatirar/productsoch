@@ -23,7 +23,7 @@ export default function UK() {
       organizers={[]}
       joinCTA={{
         label: 'Join UK Chapter',
-        href: 'https://notion.so',
+        href: '/apply',
         note: 'This chapter is growing. Join to be part of building it.',
       }}
     />

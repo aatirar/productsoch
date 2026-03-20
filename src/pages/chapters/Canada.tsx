@@ -33,7 +33,7 @@ export default function Canada() {
       ]}
       joinCTA={{
         label: 'Join Canada Chapter',
-        href: 'https://airtable.com',
+        href: '/canada/apply',
         note: 'Canada has a dedicated join process — separate from the Pakistan Notion form.',
       }}
       isCanada={true}

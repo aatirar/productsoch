@@ -68,7 +68,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 animate-fade-up"
           style={{ animationDelay: '500ms' }}
         >
-          <Link to="/join" className="btn-primary text-base md:text-lg py-4 px-8 shadow-lg shadow-primary/30 hover:shadow-primary/50">
+          <Link to="/apply" className="btn-primary text-base md:text-lg py-4 px-8 shadow-lg shadow-primary/30 hover:shadow-primary/50">
             Join Product Soch <ArrowRight size={20} />
           </Link>
           <Link to="/chapters" className="btn-ghost text-base md:text-lg py-4 px-8">

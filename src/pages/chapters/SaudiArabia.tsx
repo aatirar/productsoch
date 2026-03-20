@@ -23,7 +23,7 @@ export default function SaudiArabia() {
       organizers={[]}
       joinCTA={{
         label: 'Join Saudi Arabia Chapter',
-        href: 'https://notion.so',
+        href: '/apply',
         note: 'This chapter is growing. Join to help build it.',
       }}
     />

@@ -29,7 +29,7 @@ export default function Islamabad() {
       ]}
       joinCTA={{
         label: 'Join Islamabad Chapter',
-        href: 'https://notion.so',
+        href: '/apply',
         note: 'Opens a Notion form. Takes 2 minutes.',
       }}
     />

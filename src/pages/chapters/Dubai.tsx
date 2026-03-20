@@ -27,7 +27,7 @@ export default function Dubai() {
       ]}
       joinCTA={{
         label: 'Join Dubai Chapter',
-        href: 'https://notion.so',
+        href: '/apply',
         note: 'Opens a Notion form. Takes 2 minutes.',
       }}
     />

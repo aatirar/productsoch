@@ -50,7 +50,7 @@ export default function Footer() {
           <div>
             <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-5">Join</p>
             <div className="space-y-3">
-              <Link to="/join" className="block text-gray-400 hover:text-white transition-colors text-sm">Join Product Soch</Link>
+              <Link to="/apply" className="block text-gray-400 hover:text-white transition-colors text-sm">Join Product Soch</Link>
               <Link to="/chapters/canada" className="block text-primary hover:text-primary-light transition-colors text-sm font-medium">🍁 Canada Chapter</Link>
               <Link to="/chapters/karachi" className="block text-gray-400 hover:text-white transition-colors text-sm">Karachi</Link>
               <Link to="/chapters/lahore" className="block text-gray-400 hover:text-white transition-colors text-sm">Lahore</Link>

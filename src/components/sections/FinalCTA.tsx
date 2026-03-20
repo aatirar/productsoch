@@ -38,7 +38,7 @@ export default function FinalCTA() {
           className={`transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
         >
           <Link
-            to="/join"
+            to="/apply"
             className="btn-primary text-lg py-4 px-10 shadow-xl shadow-primary/25 hover:shadow-primary/40"
           >
             Apply to Join <ArrowRight size={20} />

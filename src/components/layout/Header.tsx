@@ -107,7 +107,7 @@ export default function Header() {
             <Link to="/about" className={`font-medium transition-colors ${isActive('/about') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}>
               About
             </Link>
-            <Link to="/join" className="btn-primary text-sm py-2 px-5">
+            <Link to="/apply" className="btn-primary text-sm py-2 px-5">
               Join Product Soch →
             </Link>
           </nav>
@@ -154,7 +154,7 @@ export default function Header() {
             <Link to="/about" className="block px-2 py-2 font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-warm transition-colors">About</Link>
           </div>
           <div className="pt-2">
-            <Link to="/join" className="btn-primary w-full justify-center">Join Product Soch →</Link>
+            <Link to="/apply" className="btn-primary w-full justify-center">Join Product Soch →</Link>
           </div>
         </div>
       </div>

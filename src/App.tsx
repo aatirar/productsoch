@@ -14,6 +14,8 @@ import USAChapter from './pages/chapters/USA'
 import Events from './pages/Events'
 import Library from './pages/Library'
 import Join from './pages/Join'
+import Apply from './pages/Apply'
+import CanadaApply from './pages/CanadaApply'
 
 export default function App() {
   return (
@@ -34,6 +36,8 @@ export default function App() {
           <Route path="/events" element={<Events />} />
           <Route path="/library" element={<Library />} />
           <Route path="/join" element={<Join />} />
+          <Route path="/apply" element={<Apply />} />
+          <Route path="/canada/apply" element={<CanadaApply />} />
         </Route>
       </Routes>
     </BrowserRouter>

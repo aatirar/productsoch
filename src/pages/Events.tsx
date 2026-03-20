@@ -75,7 +75,7 @@ export default function Events() {
               <p className="text-gray-600 mb-6">
                 Join your chapter's WhatsApp to hear first.
               </p>
-              <Link to="/join" className="btn-primary">Join a Chapter →</Link>
+              <Link to="/apply" className="btn-primary">Join a Chapter →</Link>
             </div>
           )}
         </div>
