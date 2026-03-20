@@ -23,7 +23,11 @@ const clips = [
 export default function ClipsSection() {
   const { ref: headRef, isVisible: headVisible } = useScrollAnimation()
   const { ref: clipsRef, isVisible: clipsVisible } = useScrollAnimation(0.05)
-  const [muted, setMuted] = useState(true)
+  const [mutedStates, setMutedStates] = useState([true, true, true])
+
+  const toggleMute = (index: number) => {
+    setMutedStates(prev => prev.map((m, i) => i === index ? !m : m))
+  }
 
   return (
     <section className="py-24 bg-[#111] overflow-hidden">
@@ -38,55 +42,46 @@ export default function ClipsSection() {
             A peek inside Product Soch.
           </h2>
           <p className="text-gray-400 mt-4 text-lg max-w-xl mx-auto">
-            Real people, real conversations, real energy — no rehearsed panels.
+            Real people. Real conversations.
           </p>
         </div>
 
-        {/* Three vertical phone frames in one row */}
+        {/* Three full-width vertical video cards */}
         <div
           ref={clipsRef as React.RefObject<HTMLDivElement>}
-          className="grid grid-cols-3 gap-5 justify-items-center"
+          className="grid grid-cols-3 gap-4"
         >
           {clips.map((clip, i) => (
             <div
               key={clip.src}
-              className={`transition-all duration-700 w-full max-w-[220px] ${clipsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              style={{ transitionDelay: `${i * 120}ms` }}
+              className={`relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-700 ${clipsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ aspectRatio: '9/16', transitionDelay: `${i * 120}ms` }}
             >
-              {/* Phone shell */}
-              <div className="relative bg-[#1a1a1a] rounded-[2.5rem] p-2 shadow-2xl">
-                {/* Notch */}
-                <div className="absolute top-4 left-1/2 -translate-x-1/2 w-16 h-1.5 bg-[#333] rounded-full z-10" />
-                <video
-                  src={clip.src}
-                  muted={muted}
-                  loop
-                  playsInline
-                  autoPlay
-                  className="w-full rounded-[2rem] block"
-                  style={{ aspectRatio: '9/16', objectFit: 'cover' }}
-                />
+              <video
+                src={clip.src}
+                muted={mutedStates[i]}
+                loop
+                playsInline
+                autoPlay
+                className="w-full h-full object-cover"
+              />
+
+              {/* Bottom gradient + label */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent px-4 py-5">
+                <p className="text-white font-bold text-sm leading-tight">{clip.label}</p>
+                <p className="text-gray-300 text-xs mt-0.5">{clip.type}</p>
               </div>
-              {/* Ambient glow */}
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-20 h-6 bg-primary/20 blur-xl rounded-full pointer-events-none" />
-              {/* Caption */}
-              <div className="text-center mt-4">
-                <p className="text-white font-semibold text-sm">{clip.label}</p>
-                <p className="text-gray-500 text-xs">{clip.type}</p>
-              </div>
+
+              {/* Per-video mute button */}
+              <button
+                onClick={() => toggleMute(i)}
+                className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/75 transition-colors"
+                aria-label={mutedStates[i] ? 'Unmute' : 'Mute'}
+              >
+                {mutedStates[i] ? <VolumeX size={14} /> : <Volume2 size={14} />}
+              </button>
             </div>
           ))}
-        </div>
-
-        {/* Mute toggle */}
-        <div className="flex justify-center mt-8">
-          <button
-            onClick={() => setMuted(m => !m)}
-            className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors bg-white/5 border border-white/10 rounded-full px-4 py-2"
-          >
-            {muted ? <VolumeX size={14} /> : <Volume2 size={14} />}
-            {muted ? 'Unmute' : 'Mute'}
-          </button>
         </div>
 
       </div>
