@@ -142,9 +142,9 @@ export default function YouTubePreview() {
           ref={gridRef as React.RefObject<HTMLDivElement>}
           className={`grid grid-cols-1 lg:grid-cols-3 gap-5 mb-5 transition-all duration-700 ${gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          {/* Featured spans 2 cols */}
-          <div className="lg:col-span-2">
-            <VideoCard video={featured} large onPlay={setActiveVideoId} />
+          {/* Featured spans 2 cols — flex so fill prop stretches card to row height */}
+          <div className="lg:col-span-2 flex flex-col">
+            <VideoCard video={featured} large onPlay={setActiveVideoId} fill />
           </div>
 
           {/* Two smaller cards stretch to fill the full height */}
