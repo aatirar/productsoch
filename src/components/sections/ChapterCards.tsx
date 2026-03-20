@@ -5,22 +5,22 @@ import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 const established = [
   {
     name: 'Karachi', emoji: '🌊', path: '/chapters/karachi',
-    description: 'The original Soch Café energy. Fast conversations, strong chai, and a city that runs on hustle.',
+    description: 'Fast conversations, strong chai, and a city that runs on hustle.',
     photo: '/photos/karachi-session-5.jpg',
   },
   {
     name: 'Lahore', emoji: '🌸', path: '/chapters/lahore',
-    description: 'Garden City meetups and a community that moves like a startup.',
+    description: 'The intensity of the food is matched by the intensity of the conversation.',
     photo: '/photos/lahore-session.jpg',
   },
   {
     name: 'Islamabad', emoji: '🏔️', path: '/chapters/islamabad',
-    description: 'A tight-knit crowd with a government-tech edge.',
+    description: 'A thoughtful, tight-knit crowd where policy, tech, and product thinking collide.',
     photo: '/photos/islamabad-product-of-tomorrow-1.jpeg',
   },
   {
     name: 'Canada', emoji: '🍁', path: '/chapters/canada',
-    description: 'A different timezone, the same mindset. Resume clinics, career nights, and a diaspora-strong network.',
+    description: 'PMs and PMMs unpacking how products are built — strategy, discovery, and career growth in a diaspora-strong network.',
     photo: '/photos/canada-session.jpg',
     highlight: true,
   },
@@ -31,7 +31,7 @@ const established = [
   },
   {
     name: 'Saudi Arabia', emoji: '🇸🇦', path: '/chapters/saudi-arabia',
-    description: 'A growing presence in the Kingdom\'s product scene. Pakistani talent is everywhere here.',
+    description: 'A growing presence in the Kingdom\'s product scene, with sessions shaped around the region\'s unique market.',
     photo: '/photos/ksa-pocket-meetup.jpeg',
     emerging: true,
   },
@@ -129,7 +129,7 @@ export default function ChapterCards() {
                 }`}
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
-                <span className="text-3xl">{chapter.emoji}</span>
+                <span className="text-3xl leading-none">{chapter.emoji}</span>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="font-bold text-dark text-sm">{chapter.name}</span>

@@ -1,68 +1,42 @@
 import { Coffee, Users, Monitor, FileText, BookOpen, Zap, MessageCircle, Hash } from 'lucide-react'
 import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 
-function WhatsAppMock() {
-  const messages = [
-    { name: 'Ahmed K.', text: 'Anyone hiring PM roles in fintech? 🚀', time: '10:02' },
-    { name: 'Sara M.', text: 'Just dropped a JD in #jobs — PM at a B2B SaaS startup 👀', time: '10:05' },
-    { name: 'Usman A.', text: 'Hot take: most PMs focus too much on delivery, too little on discovery', time: '10:11' },
-    { name: 'Farida H.', text: 'Next Pocket Meetup is Thursday — Karachi folks in? ☕', time: '10:18' },
-  ]
+function WhatsAppVisual() {
   return (
-    <div className="bg-[#0b141a] p-3 h-full flex flex-col justify-end gap-1.5">
-      <div className="text-center mb-1">
-        <span className="text-[#8696a0] text-[10px] bg-[#182229] px-3 py-0.5 rounded-full">Today</span>
-      </div>
-      {messages.map((msg, i) => (
-        <div key={i} className="flex flex-col items-start max-w-[85%]">
-          <span className="text-[#53bdeb] text-[9px] font-semibold ml-1 mb-0.5">{msg.name}</span>
-          <div className="bg-[#202c33] rounded-lg rounded-tl-sm px-2.5 py-1.5 text-[10px] text-[#e9edef] leading-snug">
-            {msg.text}
-            <span className="text-[#8696a0] text-[8px] ml-2 float-right mt-0.5">{msg.time}</span>
-          </div>
-        </div>
-      ))}
+    <div className="bg-[#075E54] h-full flex flex-col items-center justify-center gap-4 p-6">
+      <svg viewBox="0 0 48 48" className="w-20 h-20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="24" fill="#25D366"/>
+        <path d="M34.5 13.5C32.1 11.1 28.9 9.6 25.5 9.6C18.4 9.6 12.6 15.4 12.6 22.5C12.6 24.8 13.2 27 14.4 28.9L12.5 36L19.8 34.1C21.6 35.2 23.5 35.8 25.5 35.8C32.6 35.8 38.4 30 38.4 22.9C38.4 19.5 37 16.3 34.5 13.5ZM25.5 33.5C23.7 33.5 22 33 20.5 32.1L20.1 31.9L15.8 33L17 28.8L16.7 28.4C15.7 26.8 15.1 24.7 15.1 22.5C15.1 16.8 19.8 12.1 25.5 12.1C28.3 12.1 30.9 13.2 32.8 15.1C34.7 17 35.9 19.6 35.9 22.4C35.9 28.2 31.2 33.5 25.5 33.5ZM31.2 25.2C30.9 25 29.4 24.3 29.1 24.2C28.8 24.1 28.6 24 28.4 24.3C28.2 24.6 27.6 25.2 27.5 25.4C27.3 25.6 27.1 25.6 26.8 25.5C26.5 25.3 25.5 25 24.4 24C23.5 23.2 22.9 22.2 22.7 21.9C22.5 21.6 22.7 21.4 22.9 21.2C23.1 21 23.3 20.8 23.4 20.6C23.5 20.4 23.6 20.3 23.7 20.1C23.8 19.9 23.7 19.7 23.6 19.5C23.5 19.3 22.9 17.8 22.7 17.3C22.5 16.8 22.2 16.8 22 16.8H21.5C21.3 16.8 21 16.9 20.7 17.2C20.4 17.5 19.7 18.2 19.7 19.7C19.7 21.2 20.8 22.6 20.9 22.8C21.1 23 22.9 25.8 25.7 27.1C28.5 28.4 28.5 27.9 29.1 27.9C29.7 27.9 31 27.2 31.3 26.5C31.5 25.9 31.5 25.4 31.2 25.2Z" fill="white"/>
+      </svg>
+      <p className="text-white/80 text-sm font-medium text-center">Join on WhatsApp</p>
     </div>
   )
 }
 
-function SlackMock() {
-  const channels = ['#general', '#jobs', '#resources', '#karachi', '#canada']
-  const messages = [
-    { name: 'Zara P.', text: 'Shared a framework template for roadmap prioritisation 📋', time: '9:45' },
-    { name: 'Hassan R.', text: 'Anyone else reading Shape Up? Chapter 4 is gold', time: '9:58' },
-    { name: 'Nadia S.', text: 'Resume review slots open for this Saturday — DM me', time: '10:14' },
-  ]
+function SlackVisual() {
   return (
-    <div className="bg-[#1a1d21] h-full flex overflow-hidden">
-      {/* Sidebar */}
-      <div className="w-28 bg-[#19171d] flex flex-col pt-3 px-2 gap-1 flex-shrink-0">
-        <span className="text-[#e8e8e8] text-[9px] font-bold mb-1 px-1">Product Soch</span>
-        {channels.map(ch => (
-          <span key={ch} className={`text-[9px] px-1.5 py-0.5 rounded ${ch === '#general' ? 'bg-[#F6A801]/20 text-[#F6A801]' : 'text-[#9b9b9b]'}`}>{ch}</span>
-        ))}
-      </div>
-      {/* Messages */}
-      <div className="flex-1 flex flex-col justify-end gap-2 p-2.5">
-        <span className="text-[#9b9b9b] text-[9px] text-center"># general</span>
-        {messages.map((msg, i) => (
-          <div key={i} className="flex gap-1.5 items-start">
-            <div className="w-5 h-5 rounded bg-[#F6A801]/30 flex-shrink-0 mt-0.5" />
-            <div>
-              <span className="text-[#e8e8e8] text-[9px] font-semibold">{msg.name} </span>
-              <span className="text-[#9b9b9b] text-[8px]">{msg.time}</span>
-              <p className="text-[#d1d2d3] text-[9px] leading-snug mt-0.5">{msg.text}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+    <div className="bg-[#4A154B] h-full flex flex-col items-center justify-center gap-4 p-6">
+      <svg viewBox="0 0 48 48" className="w-20 h-20" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="28" width="8" height="8" rx="4" fill="#E01E5A"/>
+        <rect x="10" y="18" width="8" height="8" rx="4" fill="#E01E5A"/>
+        <rect x="20" y="18" width="8" height="8" rx="4" fill="#E01E5A"/>
+        <rect x="10" y="8" width="8" height="8" rx="4" fill="#36C5F0"/>
+        <rect x="20" y="8" width="8" height="8" rx="4" fill="#36C5F0"/>
+        <rect x="30" y="8" width="8" height="8" rx="4" fill="#36C5F0"/>
+        <rect x="30" y="18" width="8" height="8" rx="4" fill="#2EB67D"/>
+        <rect x="20" y="28" width="8" height="8" rx="4" fill="#2EB67D"/>
+        <rect x="30" y="28" width="8" height="8" rx="4" fill="#2EB67D"/>
+        <rect x="20" y="38" width="8" height="8" rx="4" fill="#ECB22E"/>
+        <rect x="30" y="38" width="8" height="8" rx="4" fill="#ECB22E"/>
+      </svg>
+      <p className="text-white/80 text-sm font-medium text-center">Join on Slack</p>
     </div>
   )
 }
 
 function CardImage({ photo, objectPos, alt, mock }: { photo?: string; objectPos?: string; alt: string; mock?: 'whatsapp' | 'slack' }) {
-  if (mock === 'whatsapp') return <WhatsAppMock />
-  if (mock === 'slack') return <SlackMock />
+  if (mock === 'whatsapp') return <WhatsAppVisual />
+  if (mock === 'slack') return <SlackVisual />
   return (
     <img
       src={photo}
@@ -169,8 +143,8 @@ export default function CommunityLife() {
                 icon: FileText,
                 title: 'Resume Reviews',
                 description: 'Dedicated sessions for Pakistani PMs navigating the North American job market.',
-                photo: '/photos/lahore-session-3.jpeg',
-                objectPos: 'object-top',
+                photo: '/photos/resume-review-1.jpeg',
+                objectPos: 'object-center',
                 tag: 'Canada chapter',
               },
               {
@@ -255,7 +229,7 @@ export default function CommunityLife() {
                       </div>
                       <h3 className="text-base font-bold text-white">{item.title}</h3>
                     </div>
-                    <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
+                    <p className="text-gray-300 text-base leading-relaxed">{item.description}</p>
                   </div>
                 </div>
               )
