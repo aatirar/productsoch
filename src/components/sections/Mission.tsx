@@ -5,7 +5,7 @@ const pillars = [
     num: '01',
     title: 'Meet relatable people',
     desc: 'Build genuine friendships with PMs who actually get what you do.',
-    photo: '/photos/pocket-meetup.jpg',
+    photo: '/photos/canada-session-3.jpg',
     photoPos: 'object-center',
   },
   {
@@ -27,7 +27,7 @@ const pillars = [
     title: 'Upskill',
     desc: 'Frameworks, tools, and perspectives you can use tomorrow.',
     photo: '/photos/dubai-session-2.jpg',
-    photoPos: 'object-top',
+    photoPos: 'object-[center_35%]',
   },
 ]
 
