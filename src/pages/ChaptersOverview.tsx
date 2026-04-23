@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Sprout } from 'lucide-react'
+import { Helmet } from 'react-helmet-async'
 
 const established = [
   { name: 'Karachi', emoji: '🌊', path: '/chapters/karachi', photo: '/photos/karachi-session-5.jpg', description: 'The original Soch Café energy. Fast conversations, strong chai, and a city that runs on hustle.', region: 'Pakistan' },
@@ -10,14 +11,21 @@ const established = [
 ]
 
 const emerging = [
-  { name: 'UK', emoji: '🇬🇧', path: '/chapters/uk', description: 'For Pakistani PMs navigating one of the world\'s most competitive markets.' },
-  { name: 'Saudi Arabia', emoji: '🇸🇦', path: '/chapters/saudi-arabia', description: 'Pakistani product talent is everywhere in the Kingdom. The community is taking shape.' },
-  { name: 'USA', emoji: '🇺🇸', path: '/chapters/usa', description: 'The world\'s biggest product market. We\'re building our presence in it.' },
+  { name: 'UK & Ireland', flagImg: 'gb', path: '/chapters/uk', description: 'For Pakistani PMs navigating one of the world\'s most competitive markets.' },
+  { name: 'Saudi Arabia', flagImg: 'sa', path: '/chapters/saudi-arabia', description: 'Pakistani product talent is everywhere in the Kingdom. The community is taking shape.' },
+  { name: 'USA', flagImg: 'us', path: '/chapters/usa', description: 'The world\'s biggest product market. We\'re building our presence in it.' },
 ]
 
 export default function ChaptersOverview() {
   return (
     <div className="pt-16">
+      <Helmet>
+        <title>Chapters — Product Soch | Karachi, Lahore, Islamabad, Canada & More</title>
+        <meta name="description" content="Explore Product Soch chapters across Pakistan and the diaspora. Active chapters in Karachi, Lahore, Islamabad, Canada, and Dubai. Emerging in UK, Saudi Arabia, and USA." />
+        <meta property="og:title" content="Product Soch Chapters — Pakistan is Home. Everywhere Else is Family." />
+        <meta property="og:description" content="Product managers across Karachi, Lahore, Islamabad, Canada, Dubai, and beyond. Find your chapter and join the community." />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <section className="py-24 bg-dark text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-6">Our chapters</h1>
@@ -76,7 +84,7 @@ export default function ChaptersOverview() {
                 to={chapter.path}
                 className="group flex items-center gap-4 p-5 rounded-2xl border border-gray-200 bg-white hover:border-primary/30 hover:shadow-md transition-all"
               >
-                <span className="text-4xl">{chapter.emoji}</span>
+                <img src={`https://flagcdn.com/w40/${chapter.flagImg}.png`} className="w-10 h-7 object-cover rounded-sm flex-shrink-0" alt={`${chapter.name} flag`} />
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="font-bold text-dark">{chapter.name}</span>

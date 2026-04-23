@@ -45,14 +45,6 @@ export default function FinalCTA() {
           </Link>
         </div>
 
-        <p
-          className={`text-gray-600 text-sm mt-6 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-        >
-          Pakistan chapters use a Notion form. Canada uses a Google Form.{' '}
-          <Link to="/chapters" className="text-primary hover:text-primary-light transition-colors">
-            See all chapters →
-          </Link>
-        </p>
       </div>
     </section>
   )

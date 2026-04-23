@@ -11,12 +11,10 @@ const established = [
 ]
 
 const emergingChapters = [
-  { name: 'UK', path: '/chapters/uk' },
+  { name: 'UK & Ireland', path: '/chapters/uk' },
   { name: 'Saudi Arabia', path: '/chapters/saudi-arabia' },
   { name: 'USA', path: '/chapters/usa' },
 ]
-
-const chapters = [...established, ...emergingChapters]
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -30,7 +28,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false)
   }, [location.pathname])
@@ -47,7 +44,6 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo — PNG image */}
           <Link to="/" className="flex items-center hover:opacity-90 transition-opacity">
             <img
               src="/logos/Primary.png"
@@ -58,7 +54,6 @@ export default function Header() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
-            {/* Chapters dropdown */}
             <div
               className="relative"
               onMouseEnter={() => setChaptersOpen(true)}
@@ -73,16 +68,16 @@ export default function Header() {
                 }`}
               >
                 <p className="px-4 pt-1 pb-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Pakistan</p>
-                {established.filter(c => ['Karachi','Islamabad','Lahore'].includes(c.name)).map((c) => (
+                {established.filter(c => ['Karachi', 'Islamabad', 'Lahore'].includes(c.name)).map((c) => (
                   <Link key={c.path} to={c.path} className="block px-4 py-2 text-sm text-gray-700 hover:bg-warm hover:text-primary transition-colors">
                     {c.name}
                   </Link>
                 ))}
                 <div className="border-t border-gray-100 mt-2 pt-2">
                   <p className="px-4 pb-1 text-[10px] font-bold text-gray-400 uppercase tracking-widest">International</p>
-                  {established.filter(c => ['Canada','Dubai'].includes(c.name)).map((c) => (
+                  {established.filter(c => ['Canada', 'Dubai'].includes(c.name)).map((c) => (
                     <Link key={c.path} to={c.path} className={`block px-4 py-2 text-sm transition-colors ${c.name === 'Canada' ? 'text-primary font-semibold hover:bg-warm' : 'text-gray-700 hover:bg-warm hover:text-primary'}`}>
-                      {c.name === 'Canada' ? '🍁 Canada' : c.name}
+                      {c.name}
                     </Link>
                   ))}
                 </div>
@@ -98,12 +93,6 @@ export default function Header() {
               </div>
             </div>
 
-            <Link to="/events" className={`font-medium transition-colors ${isActive('/events') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}>
-              Events
-            </Link>
-            <Link to="/library" className={`font-medium transition-colors ${isActive('/library') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}>
-              Library
-            </Link>
             <Link to="/about" className={`font-medium transition-colors ${isActive('/about') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}>
               About
             </Link>
@@ -131,15 +120,15 @@ export default function Header() {
       >
         <div className="px-4 py-4 space-y-2">
           <p className="text-xs font-bold text-gray-400 uppercase tracking-wider px-2 pt-1 pb-1">Pakistan</p>
-          {established.filter(c => ['Karachi','Islamabad','Lahore'].includes(c.name)).map((c) => (
+          {established.filter(c => ['Karachi', 'Islamabad', 'Lahore'].includes(c.name)).map((c) => (
             <Link key={c.path} to={c.path} className="block px-2 py-2 text-sm font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-warm transition-colors">
               {c.name}
             </Link>
           ))}
           <p className="text-xs font-bold text-gray-400 uppercase tracking-wider px-2 pt-2 pb-1">International</p>
-          {established.filter(c => ['Canada','Dubai'].includes(c.name)).map((c) => (
+          {established.filter(c => ['Canada', 'Dubai'].includes(c.name)).map((c) => (
             <Link key={c.path} to={c.path} className={`block px-2 py-2 text-sm font-medium rounded-lg transition-colors ${c.name === 'Canada' ? 'text-primary hover:bg-warm' : 'text-gray-700 hover:text-primary hover:bg-warm'}`}>
-              {c.name === 'Canada' ? '🍁 Canada' : c.name}
+              {c.name}
             </Link>
           ))}
           <p className="text-xs font-bold text-gray-400 uppercase tracking-wider px-2 pt-2 pb-1">Emerging</p>
@@ -149,8 +138,6 @@ export default function Header() {
             </Link>
           ))}
           <div className="border-t border-gray-100 pt-3 mt-2 space-y-2">
-            <Link to="/events" className="block px-2 py-2 font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-warm transition-colors">Events</Link>
-            <Link to="/library" className="block px-2 py-2 font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-warm transition-colors">Library</Link>
             <Link to="/about" className="block px-2 py-2 font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-warm transition-colors">About</Link>
           </div>
           <div className="pt-2">

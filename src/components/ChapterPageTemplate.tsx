@@ -1,11 +1,18 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, MapPin } from 'lucide-react'
+import { ArrowRight, MapPin, Quote } from 'lucide-react'
+import { Helmet } from 'react-helmet-async'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
-interface Organizer {
+interface Photo {
+  src: string
+  tag?: string
+}
+
+interface ChapterLead {
   name: string
   role: string
-  linkedin: string
+  quote: string
+  photo?: string
 }
 
 interface ChapterPageProps {
@@ -15,38 +22,57 @@ interface ChapterPageProps {
   headline: string
   description: string[]
   activities: string[]
-  organizers: Organizer[]
-  photos: string[]          // real chapter photos
+  photos: Photo[]
+  heroObjectPosition?: string
+  chapterLead?: ChapterLead
   joinCTA: {
     label: string
     href: string
     note?: string
   }
   isCanada?: boolean
+  metaTitle?: string
+  metaDescription?: string
 }
 
 export default function ChapterPageTemplate({
-  name, emoji, country, headline, description, activities,
-  organizers, photos, joinCTA, isCanada = false,
+  name, emoji, country, headline, description,
+  activities, photos, heroObjectPosition = 'object-center',
+  chapterLead, joinCTA, isCanada = false,
+  metaTitle, metaDescription,
 }: ChapterPageProps) {
+  const { ref: galleryRef, isVisible: galleryVisible } = useScrollAnimation(0.05)
+  const { ref: leadRef, isVisible: leadVisible } = useScrollAnimation()
   const { ref: actRef, isVisible: actVisible } = useScrollAnimation()
   const { ref: ctaRef, isVisible: ctaVisible } = useScrollAnimation()
 
+  const heroPhoto = photos[0]
+  const galleryPhotos = photos.slice(1)
+
   return (
     <div className="pt-16">
+      {(metaTitle || metaDescription) && (
+        <Helmet>
+          {metaTitle && <title>{metaTitle}</title>}
+          {metaDescription && <meta name="description" content={metaDescription} />}
+          {metaTitle && <meta property="og:title" content={metaTitle} />}
+          {metaDescription && <meta property="og:description" content={metaDescription} />}
+          <meta property="og:type" content="website" />
+        </Helmet>
+      )}
 
       {/* Hero — full bleed photo */}
       <section className="relative min-h-[55vh] flex items-end overflow-hidden">
-        {photos[0] && (
+        {heroPhoto && (
           <>
             <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url(${photos[0]})` }}
+              className={`absolute inset-0 bg-cover ${heroObjectPosition}`}
+              style={{ backgroundImage: `url(${heroPhoto.src})` }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/65 to-black/35" />
           </>
         )}
-        {!photos[0] && (
+        {!heroPhoto && (
           <div className={`absolute inset-0 ${isCanada ? 'bg-gradient-to-br from-[#0D1B2A] to-[#1A3A5C]' : 'bg-dark'}`} />
         )}
 
@@ -68,19 +94,69 @@ export default function ChapterPageTemplate({
         </div>
       </section>
 
-      {/* Photo strip (remaining photos if any) */}
-      {photos.length > 1 && (
-        <section className="py-8 bg-offwhite">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-              {photos.slice(1).map((photo, i) => (
-                <div key={i} className="flex-shrink-0 w-64 aspect-[4/3] rounded-xl overflow-hidden">
+      {/* Chapter lead quote — above gallery */}
+      {chapterLead && (
+        <section className="py-16 bg-warm">
+          <div
+            ref={leadRef as React.RefObject<HTMLDivElement>}
+            className={`max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-700 ${leadVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+          >
+            <div className="relative">
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-primary/10 blur-3xl rounded-3xl scale-95" />
+              <div className="relative bg-white rounded-2xl border border-primary/10 p-8 shadow-lg shadow-primary/10">
+                <Quote size={28} className="text-primary/40 mb-4" />
+                <p className="text-xl text-dark font-medium leading-relaxed italic mb-6">
+                  "{chapterLead.quote}"
+                </p>
+                <div className="flex items-center gap-4">
+                  {chapterLead.photo ? (
+                    <img
+                      src={chapterLead.photo}
+                      alt={chapterLead.name}
+                      className="w-12 h-12 rounded-full object-cover object-top flex-shrink-0"
+                    />
+                  ) : (
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary font-bold text-lg">{chapterLead.name.charAt(0)}</span>
+                    </div>
+                  )}
+                  <div>
+                    <p className="font-bold text-dark">{chapterLead.name}</p>
+                    <p className="text-sm text-gray-500">{chapterLead.role}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Photo gallery — 2 columns */}
+      {galleryPhotos.length > 0 && (
+        <section className="py-12 bg-white">
+          <div
+            ref={galleryRef as React.RefObject<HTMLDivElement>}
+            className={`max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-700 ${galleryVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+          >
+            <div className="grid grid-cols-2 gap-3">
+              {galleryPhotos.map((photo, i) => (
+                <div
+                  key={i}
+                  className="relative overflow-hidden rounded-2xl group"
+                  style={{ transitionDelay: `${i * 60}ms` }}
+                >
                   <img
-                    src={photo}
-                    alt={`${name} community`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-400"
+                    src={photo.src}
+                    alt={photo.tag ?? `${name} community`}
+                    className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
+                  {photo.tag && (
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-4 py-3">
+                      <span className="text-white text-xs font-semibold">{photo.tag}</span>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -89,7 +165,7 @@ export default function ChapterPageTemplate({
       )}
 
       {/* Activities */}
-      <section className="py-20 bg-warm">
+      <section className={`py-20 ${chapterLead ? 'bg-white' : 'bg-warm'}`}>
         <div
           ref={actRef as React.RefObject<HTMLDivElement>}
           className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -103,7 +179,7 @@ export default function ChapterPageTemplate({
             {activities.map((activity, i) => (
               <div
                 key={activity}
-                className={`flex items-start gap-3 bg-white rounded-xl p-4 border border-gray-100 hover:border-primary/30 transition-all duration-500 ${
+                className={`flex items-start gap-3 ${chapterLead ? 'bg-warm' : 'bg-white'} rounded-xl p-4 border border-gray-100 hover:border-primary/30 transition-all duration-500 ${
                   actVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}
                 style={{ transitionDelay: `${i * 60}ms` }}
@@ -115,32 +191,6 @@ export default function ChapterPageTemplate({
           </div>
         </div>
       </section>
-
-      {/* Organizers */}
-      {organizers.length > 0 && (
-        <section className="py-20 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-extrabold text-dark mb-8">Chapter organizers</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {organizers.map((org) => (
-                <div key={org.name} className="flex items-center gap-4 p-5 border border-gray-100 rounded-2xl hover:border-primary/20 hover:shadow-sm transition-all">
-                  <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center shrink-0 text-2xl">
-                    👤
-                  </div>
-                  <div>
-                    <div className="font-bold text-dark">{org.name}</div>
-                    <div className="text-gray-500 text-sm">{org.role}</div>
-                    <a href={org.linkedin} target="_blank" rel="noopener noreferrer"
-                      className="text-primary text-sm font-bold hover:text-primary-dark transition-colors mt-1 inline-block">
-                      LinkedIn →
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Join CTA */}
       <section className={`py-20 ${isCanada ? 'bg-[#0D1B2A]' : 'bg-dark'} text-white relative overflow-hidden`}>

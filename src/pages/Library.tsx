@@ -25,30 +25,6 @@ const videos = [
     topics: ['Strategy', 'Career'],
     featured: true,
   },
-  {
-    speaker: 'Speaker Name',
-    title: 'Prioritization Frameworks That Actually Work',
-    description: 'A deep dive into how top PMs actually make prioritization decisions under uncertainty.',
-    duration: '40 min',
-    topics: ['Discovery'],
-    featured: false,
-  },
-  {
-    speaker: 'Speaker Name',
-    title: 'Writing Product Specs People Actually Read',
-    description: 'The art of communicating product decisions to engineers, designers, and stakeholders.',
-    duration: '28 min',
-    topics: ['Career'],
-    featured: false,
-  },
-  {
-    speaker: 'Speaker Name',
-    title: 'Navigating Your First PM Role',
-    description: 'Practical advice for PMs in their first 90 days — what to focus on and what to ignore.',
-    duration: '32 min',
-    topics: ['Career'],
-    featured: false,
-  },
 ]
 
 const topics = ['All', 'Strategy', 'Discovery', 'Career']
@@ -127,15 +103,6 @@ export default function Library() {
             </div>
           </div>
 
-          {/* All videos */}
-          <div className="mt-12">
-            <h2 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-6">All videos</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {videos.filter(v => !v.featured).map((video) => (
-                <VideoCard key={video.speaker + video.title} video={video} />
-              ))}
-            </div>
-          </div>
         </div>
       </section>
     </div>
