@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,9 +13,6 @@
     font-family: 'Inter', system-ui, sans-serif;
     color: #1C1C1C;
     background-color: #ffffff;
-  }
-  h1, h2 {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   }
 }
 
@@ -56,6 +51,11 @@
   .delay-400 { animation-delay: 400ms; }
   .delay-500 { animation-delay: 500ms; }
   .delay-600 { animation-delay: 600ms; }
+}
+
+/* Headline font — outside @layer so it beats Tailwind preflight */
+h1, h2 {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
 /* Vertical video phone frame */
