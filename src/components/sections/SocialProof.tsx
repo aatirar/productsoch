@@ -1,9 +1,9 @@
 import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 
 const stats = [
-  { number: '2,000+', label: 'Members' },
+  { number: '1,000+', label: 'Members' },
   { number: '6', label: 'Chapters' },
-  { number: '6 years', label: 'Of conversations' },
+  { number: '5 years', label: 'Of conversations' },
   { number: 'Free', label: 'To join' },
 ]
 

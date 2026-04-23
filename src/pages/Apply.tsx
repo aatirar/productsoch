@@ -17,7 +17,7 @@ export default function Apply() {
           <iframe
             src="https://productsoch.notion.site/ebd//17cf9be422f380f399d2de32bce74866"
             width="100%"
-            height="600"
+            height="3000"
             frameBorder={0}
             allowFullScreen
             title="Product Soch Application Form"

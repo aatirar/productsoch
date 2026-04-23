@@ -20,7 +20,7 @@ const established = [
   },
   {
     name: 'Canada', emoji: '🍁', path: '/chapters/canada',
-    description: 'PMs and PMMs unpacking how products are built — strategy, discovery, and career growth in a diaspora-strong network.',
+    description: 'PMs and PMMs unpacking how products are built: strategy, discovery, and career growth in a diaspora-strong network.',
     photo: '/photos/canada-session.jpg',
     highlight: true,
   },
@@ -39,11 +39,11 @@ const established = [
 
 const emergingChapters = [
   {
-    name: 'UK', emoji: '🇬🇧', path: '/chapters/uk',
+    name: 'UK', emoji: '🇬🇧', flagImg: 'gb', path: '/chapters/uk',
     description: 'For Pakistani PMs navigating one of the world\'s most competitive markets.',
   },
   {
-    name: 'USA', emoji: '🇺🇸', path: '/chapters/usa',
+    name: 'USA', emoji: '🇺🇸', flagImg: 'us', path: '/chapters/usa',
     description: 'The world\'s biggest product market. We\'re building the Pakistani PM community in it.',
   },
 ]
@@ -129,7 +129,11 @@ export default function ChapterCards() {
                 }`}
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
-                <span className="text-3xl leading-none">{chapter.emoji}</span>
+                {'flagImg' in chapter && chapter.flagImg ? (
+                  <img src={`https://flagcdn.com/w40/${chapter.flagImg}.png`} className="w-9 h-6 object-cover rounded-sm flex-shrink-0" alt={`${chapter.name} flag`} />
+                ) : (
+                  <span className="text-3xl leading-none">{chapter.emoji}</span>
+                )}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="font-bold text-dark text-sm">{chapter.name}</span>

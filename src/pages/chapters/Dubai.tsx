@@ -6,24 +6,21 @@ export default function Dubai() {
       name="Dubai"
       emoji="🏙️"
       country="UAE"
-      headline="Where Pakistani PMs land on their way up."
+      headline="Shaping the Gulf product landscape."
       description={[
-        "Dubai is a hub — for ambition, for the Gulf PM scene, and increasingly for Pakistani product talent. The chapter is built around the unique experience of building products in a fast-moving market.",
-        "Expect a mix of startup and enterprise PMs, sharp discussions about the Gulf context, and a network that spans multiple industries.",
+        "Pakistani product talent has always been a force in the Gulf, and the Dubai chapter is where that talent finds its community.",
+        "From fintech to proptech to e-commerce, this chapter connects PMs across industries who are building some of the most ambitious products in the region.",
       ]}
       photos={[
-        '/photos/dubai-session.jpg',
-        '/photos/dubai-session-2.jpg',
-        '/photos/pocket-meetup.jpg',
+        { src: '/photos/dubai-session.jpg' },
+        { src: '/photos/dubai-session-2.jpg', tag: 'Soch Café' },
+        { src: '/photos/pocket-meetup.jpg', tag: 'Pocket Meetup' },
       ]}
       activities={[
-        "Meetups in Dubai with the Gulf PM community",
+        "Soch Cafés with the Gulf PM community",
         "Cross-industry discussions on building in the Gulf",
         "WhatsApp community for job leads and networking",
         "Connections to the broader Product Soch network",
-      ]}
-      organizers={[
-        { name: 'Dubai Lead', role: 'Dubai Chapter Organizer', linkedin: '#' },
       ]}
       joinCTA={{
         label: 'Join Dubai Chapter',

@@ -6,25 +6,36 @@ export default function Lahore() {
       name="Lahore"
       emoji="🌸"
       country="Pakistan"
-      headline="Garden City meetups and a community that moves like a startup."
+      headline="Deep roots. Honest conversations."
       description={[
-        "Lahore has a different energy — warmer, more collaborative, with a startup culture that punches above its weight. The PM community here is tight-knit and genuinely supportive.",
-        "Home to the 'Product of Tomorrow' flagship event, Lahore chapter punches above its weight.",
+        "Lahore's product community takes its time and gets it right. PMs from some of Pakistan's brightest startups gather here not to network, but to actually talk: about what building products looks like, what failing looks like, and what comes next.",
+        "Collaborative, curious, and grounded. The kind of chapter where the conversation keeps going long after the session ends.",
       ]}
       photos={[
-        '/photos/lahore-session.jpg',
-        '/photos/lahore-session-3.jpeg',
-        '/photos/lahore-discssion.jpg',
-        '/photos/lahore-meetup-aug-2025.jpg',
+        { src: '/photos/lahore-session.jpg' },
+        { src: '/photos/lahore-session-3.jpeg', tag: 'Soch Café' },
+        { src: '/photos/lahore-discssion.jpg', tag: 'Pocket Meetup' },
+        { src: '/photos/lahore-meetup-aug-2025.jpg', tag: 'Soch Café' },
+        { src: '/photos/lahore-soch-cafe-feb-2025.jpg', tag: 'Soch Café' },
+        { src: '/photos/lahore-soch-cafe-4.jpg', tag: 'Soch Café' },
+        { src: '/photos/lahore-soch-cafe-5.jpg', tag: 'Soch Café' },
+        { src: '/photos/lahore-soch-cafe-at-devsinc.jpg', tag: 'Soch Café' },
+        { src: '/photos/lahore-soch-cafe-at-mindstorm-studios.jpg', tag: 'Soch Café' },
+        { src: '/photos/lahore-soch-cafe-session-mindstorm.jpg', tag: 'Soch Café' },
       ]}
+      metaTitle="Lahore Chapter | Product Soch | Pakistan's PM Community"
+      metaDescription="Join the Product Soch Lahore chapter: warm, collaborative product management meetups in Lahore. Soch Cafés, pocket meetups, and the annual Product of Tomorrow hackathon."
+      chapterLead={{
+        name: 'Hassan Zia',
+        role: 'Chapter Lead, Lahore',
+        quote: "What makes Lahore special is the quality of conversation. People here are genuinely curious, genuinely collaborative, and building things that actually matter.",
+        photo: '/photos/hassan-zia-lahore.webp',
+      }}
       activities={[
-        "Quarterly Soch Cafés in Garden City venues",
-        "Product of Tomorrow — the annual flagship event",
-        "Pocket Nips organized by members",
+        "Quarterly Soch Cafés: 25–40 people, one sharp speaker",
+        "Product of Tomorrow: the annual flagship hackathon",
+        "Pocket Meetups organized by members",
         "WhatsApp community for daily connection",
-      ]}
-      organizers={[
-        { name: 'Chapter Lead', role: 'Lahore Chapter Organizer', linkedin: '#' },
       ]}
       joinCTA={{
         label: 'Join Lahore Chapter',
